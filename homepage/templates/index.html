@@ -1,0 +1,82 @@
+##INDEX PAGE
+<%inherit file="app_base.htm" />
+
+<%block name="content_top">
+</%block>
+
+<%block name="content_left">
+  <div class="sidebar">
+    <a class="js-scroll-trigger" href="#maincontent">Skip to main content</a>
+    <h2>Discover</h2>
+    <ul>
+      <li><a href="#">New Products</a></li>
+      <li><a href="#">Rentals</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Information</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</%block>
+
+<%block name="content_middle">
+  <div id="intro_page">
+    <h1 class="maintitle">FOMO</h1>
+    <a class="btn btn-lg myaction" href="/catalog/index/">Shop Now</a>
+  </div>
+    <div class="content">
+      <hr />
+      <div id="maincontent" class="container-fluid">
+        <div class="row">
+          <h1 class="mytitle">Family Oriented Music Organization</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <img alt="classical guitar" class="img-responsive" src="${ STATIC_URL }homepage/media/images/guitar.jpg" />
+          </div>
+          <div class="col-md-4">
+            <img alt="upright piano" class="img-responsive" src="${ STATIC_URL }homepage/media/images/piano.jpg" />
+          </div>
+          <div class="col-md-4">
+            <img alt="gold trumpet" class="img-responsive" src="${ STATIC_URL }homepage/media/images/trumpet.jpg" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <img alt="clarinet" class="img-responsive" src="${ STATIC_URL }homepage/media/images/clarinet.jpg" />
+          </div>
+          <div class="col-md-4">
+            <img alt="violin" class="img-responsive" src="${ STATIC_URL }homepage/media/images/violin.jpg" />
+          </div>
+          <div class="col-md-4">
+            <img alt="french horn" class="img-responsive" src="${ STATIC_URL }homepage/media/images/frenchhorn.jpg" />
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="info_text">
+              Family Oriented Music Organization has been in business since 1965. Our core values include
+              providing families in the community with access to quality instruments and musical instruction.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p class="info_text">
+              We offer the best deal in Band and Orchestra Rent-To-Own Programs in the state.
+              We carry a fantastic selection of guitars, both acoustic and electric with over 200 different models.
+              We carry an extensive sheet music library with both lesson books and popular titles.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p class="info_text">
+              We will do our very best to keep our family values and offer premium service and products.
+              <br /><br />
+              We hope that you have an enjoyable experience on our site and in our stores. We strive to
+              help all families have access to the amazing power of music in their homes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</%block>

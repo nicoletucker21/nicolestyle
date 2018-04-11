@@ -1,0 +1,63 @@
+#receipt
+{
+  width:650px;
+  margin:auto;
+  font-family:calibri;
+}
+
+#receipt h2
+{
+  font-size:25px;
+  font-weight:bold;
+  margin:0px;
+  margin-bottom:10px;
+}
+
+#receipt p
+{
+  font-size:18px;
+}
+
+#order_table
+{
+  width:150px;
+}
+
+.receipt_line
+{
+  width:100%;
+  float:left;
+  margin-top:20px;
+}
+
+.receipt_item
+{
+  float:left;
+  width:50%;
+}
+
+.total
+{
+  font-size:18px;
+  font-weight:bold;
+}
+
+#order_items
+{
+  padding-top:10px;
+  width:100%;
+  margin:auto;
+  margin-top:20px;
+  border:1px solid gray;
+  border-radius:15px;
+  float:left;
+}
+
+@media print
+{
+body * { visibility: hidden; }
+#content_middle {margin-left:0px;}
+#receipt * { visibility: visible; }
+#receipt { position: absolute; top:0; left:0; }
+#buttons * {visibility: hidden}
+}

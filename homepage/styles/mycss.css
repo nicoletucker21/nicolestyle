@@ -1,0 +1,29 @@
+.myicon
+{
+  width:40px;
+  margin-top:-10px;
+  border-radius:10px;
+}
+
+#myheader
+{
+  background-color:#753127;
+}
+
+body
+{
+
+}
+
+#maintenance
+{
+  background-color:red;
+  color:white;
+  text-align: center;
+}
+
+#maintenance p
+{
+  margin:0px;
+  padding:0px;
+}

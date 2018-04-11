@@ -1,0 +1,19 @@
+
+<%inherit file="/homepage/templates/base_ajax.htm" />
+
+<%block name="content">
+
+<ul id="catalog_list">
+  %for p in product_page:
+  <a href="/catalog/detail/${ p.id }/">
+    <li class="product_tile">
+      <div><img class="product_image" src="${ p.image_url() }" /></div>
+      <div class="product_title">${ p.name }</div>
+      <div class="product_price alert alert-info">$${ p.price }</div>
+      <!--<div>(${ p.category })</div>-->
+    </li>
+  </a>
+  %endfor
+</ul>
+
+</%block>

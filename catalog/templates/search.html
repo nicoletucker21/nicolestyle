@@ -1,0 +1,48 @@
+<%inherit file="app_base.htm" />
+
+<%block name="content_middle">
+<div id="search_form">
+  <h1>Search Products</h1>
+  <div class="form-container">
+    <form id="form" action="" method="POST">
+
+      <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }" />
+
+      <p><label for="id_name">Product Name:</label> <input value='${form['name']}' type="text" name="name" class="form-control" id="id_name" /></p>
+      <p><label for="id_category">Category:</label> <input value='${form['category']}' type="text" name="category" class="form-control" id="id_category" /></p>
+      <p><label for="id_max_price">Max Price:</label> <input value='${form['max_price']}' type="text" name="max_price" class="form-control" id="id_max_price" /></p>
+      <p class="text-center"><button type="submit" class="btn btn-primary">Search</button></p>
+
+    </form>
+  </div>
+</div>
+<div id="results">
+  %if len(results) > 0:
+  <h1>Search Results</h1>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+    %for item in results:
+      <tr>
+        <td>${loop.index + 1}</td>
+        <th scope="row"><a href="/catalog/detail/${item.id}/"><img src="${item.image_url()}" width="75" /></a></th>
+        <td><a href='/catalog/detail/${item.id}/'>${item}</a></td>
+        <td>${'${:,.2f}'.format(item.price)}</td>
+        <td>${item.get_quantity()}</td>
+      </tr>
+    %endfor
+    </tbody>
+    </table>
+  %elif show is None:
+  <h2>No products match your search.</h2>
+  %endif
+  </div>
+</%block>

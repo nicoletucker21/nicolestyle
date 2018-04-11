@@ -1,0 +1,126 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+  <style>
+  #receipt
+  {
+    width:650px;
+    margin:auto;
+    font-family:calibri;
+  }
+
+  #receipt h2
+  {
+    font-size:25px;
+    font-weight:bold;
+    margin:0px;
+    margin-bottom:10px;
+  }
+
+  #receipt p
+  {
+    font-size:18px;
+  }
+
+  .receipt_line
+  {
+    width:100%;
+    float:left;
+    margin-top:20px;
+  }
+
+  .receipt_item
+  {
+    float:left;
+    width:50%;
+  }
+
+  .total
+  {
+    font-size:18px;
+    font-weight:bold;
+  }
+
+  #order_items
+  {
+    padding-top:10px;
+    width:100%;
+    margin:auto;
+    margin-top:20px;
+    border:1px solid gray;
+    border-radius:15px;
+    float:left;
+  }
+
+  </style>
+</head>
+<body>
+
+<div id='receipt'>
+  <h1>Thank you for your purchase, ${request.user}.</h1>
+  <div class="receipt_line">
+    <div class="receipt_item">
+      <h2>Your order will be sent to:</h2>
+      <div id="address">
+        <p>${ order.ship_address }</p>
+        <p>${ order.ship_city }, ${ order.ship_state } ${ order.ship_zip_code }</p>
+      </div>
+    </div>
+    <div class="receipt_item">
+      <h2>Your order tracking number:</h2>
+      <p>${ order.ship_tracking }</p>
+    </div>
+  </div>
+  <div class="receipt_line">
+    <div class="receipt_item">
+      <h2>Order Details</h2>
+      <p>Order number: ${order.id}</p>
+      <p>Order date: ${order.order_date}</p>
+    </div>
+  </div>
+
+<div id="order_items">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  %for item in cart:
+    <tr>
+      <td>${loop.index + 1}</td>
+      <th scope="row"><img src="${item.product.image_url()}" width="75" /></th>
+      <td>${item.product}</td>
+      <td>${'${:,.2f}'.format(item.price)}</td>
+      <td>${item.quantity}</td>
+      <td>${'${:,.2f}'.format(item.extended)}</td>
+    </tr>
+  %endfor
+    <tr>
+      <td></td><td></td><td></td><td></td>
+      <td>Subtotal</td>
+      <td>${'${:,.2f}'.format(order.subtotal)}</td>
+    </tr>
+    <tr>
+      <td></td><td></td><td></td><td></td>
+      <td>Total Tax</td>
+      <td>${'${:,.2f}'.format(order.total_price - order.subtotal)}</td>
+    </tr>
+    <tr>
+      <td></td><td></td><td></td><td></td>
+      <td class="total">Order Total</td>
+      <td class="total">${'${:,.2f}'.format(order.total_price)}</td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+</div>
+</body>
+</html>

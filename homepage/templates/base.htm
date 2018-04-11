@@ -1,0 +1,97 @@
+## this is the skeleton of all pages on in this app - it defines the basic html tags
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+
+        <title>FOMO</title>
+
+        ##icon
+        <link rel="shortcut icon" type="image/png" href="${STATIC_URL}homepage/media/images/icon.png"/>
+
+        ## add any site-wide scripts or CSS here; for example, jquery:
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="${ STATIC_URL }homepage/media/bootstrap/js/popper.min.js"></script>
+        <script src="${ STATIC_URL }homepage/media/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="${ STATIC_URL }homepage/styles/mycss.css" />
+
+        ## render the static file links with the same name as this template
+        <script src="/django_mako_plus/dmp-common.min.js"></script>
+        ${ django_mako_plus.links(self) }
+
+        ##icon
+        ##<link rel="icon" href="${ STATIC_URL }homepage/media/images/icon.ico">
+
+        ##bootstrap
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap-theme.min.css" />
+
+    </head>
+    <body>
+          ##maintenance message area
+          <div id="maintenance">
+            <%block name="maintenance">
+            </%block>
+          </div>
+        <header id="myheader">
+            <nav id="mynav" class="navbar navbar-inverse">
+              <a class="navbar-brand" href="/homepage/index/"><img class="myicon" src="${ STATIC_URL }homepage/media/images/FOMO.png" /></a>
+              <div class="container-fluid">
+                <div class="navbar-header">
+                </div>
+                <ul class="nav navbar-nav">
+                  <li><a href="/homepage/index/">FOMO</a></li>
+                  <%block name="menu">
+                      The nav bar goes here
+                  </%block>
+                </ul>
+
+                  <div class="dropdown navbar-right">
+                    <ul class="nav navbar-nav">
+                      <%block name="login">
+                        Dropdown goes here
+                      </%block>
+                    </ul>
+                  </div>
+              </div>
+            </nav>
+        </header>
+
+        <main>
+          <div id="content_top">
+            <%block name="content_top">
+            </%block>
+          </div>
+
+          <div id="main_page">
+            <div id="content_left">
+              <%block name="content_left">
+              </%block>
+            </div>
+
+            <div id="content_middle">
+              <%block name="content_middle">
+              </%block>
+            </div>
+
+            <div id="content_right">
+              <%block name="content_right">
+              </%block>
+            </div>
+
+          </div>
+
+        </main>
+
+        <footer id="footer">
+          <div class="container-fluid">
+            <%block name="footer">
+              <%! from datetime import datetime %>
+              <p>&copy FOMO ${ datetime.now().year }</p>
+            </%block>
+          </div>
+        </footer>
+
+    </body>
+</html>
